@@ -1,0 +1,27 @@
+import java.lang.Math;
+
+public class CalcularArea {
+    public static double calcularArea(Poligono poligono) {
+        if (poligono instanceof Triangulo) {
+            Triangulo t = (Triangulo) poligono;
+            return (t.getBase() * t.getAltura()) / 2;
+        } else if (poligono instanceof Cuadrado) {
+            Cuadrado c = (Cuadrado) poligono;
+            return Math.pow(c.getLado(), 2);
+        } else if (poligono instanceof Rectangulo) {
+            Rectangulo r = (Rectangulo) poligono;
+            return r.getBase() * r.getAltura();
+        }
+        return -1; // Retorna -1 si el polígono es inválido
+    }
+
+    public static void main(String[] args) {
+        Triangulo triangulo = new Triangulo(10, 5);
+        Cuadrado cuadrado = new Cuadrado(4);
+        Rectangulo rectangulo = new Rectangulo(6, 3);
+
+        System.out.println("Área del triángulo: " + calcularArea(triangulo));
+        System.out.println("Área del cuadrado: " + calcularArea(cuadrado));
+        System.out.println("Área del rectángulo: " + calcularArea(rectangulo));
+    }
+}
